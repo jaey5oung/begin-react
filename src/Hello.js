@@ -8,9 +8,15 @@ import React from 'react';
 
 // export default Hello;
 
-function Hello({ color, name }) {
-  return <div style={{ color }}>안녕하세요{name}</div>;
+function Hello({ color, name, isSpecial }) {
+  return (
+    <div style={{ color }}>
+      {isSpecial && <b>*</b>}안녕하세요{name}
+    </div>
+  );
 }
+//값이 변하는걸 보여주고싶다라고하면 삼항연산자
+//값을 숨겻다가 나타냇다가를 단순하게 보여주고싶으면 엔드연산자
 
 Hello.defaultProps = {
   name: '이름없음',

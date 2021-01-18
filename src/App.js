@@ -1,26 +1,12 @@
 import React from 'react';
-import Hello from './Hello';
 import './App.css';
-import Wrapper from './Wrapper';
+// import InputSample from './18InputSample';
+// import Counter from './Counter';
 
+import InputSample2 from './18InputSample2';
 function App() {
-  const name = 'react';
-  const style = {
-    backgroundColor: 'black',
-    color: 'aqua',
-    fontSize: 24,
-    padding: '1rem',
-  };
-  return (
-    <Wrapper>
-      <Hello name="react" color="red" isSpecial={true} />
-      <Hello color="blue" />
-      <div style={style}>{name}</div>
-      <div className="gray-box"></div>
-    </Wrapper>
-  );
+  return <InputSample2/>
 }
-
 export default App;
 
 //jsx조건

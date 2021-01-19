@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import UserList from './19UserList2';
 // import InputSample from './18InputSample';
 // import Counter from './Counter';
+// import InputSample2 from './18InputSample2';
+// import UserList from './19UserList';
 
-import InputSample2 from './18InputSample2';
 function App() {
-  return <InputSample2/>
+  return <UserList />;
 }
 export default App;
 

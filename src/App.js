@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import UserList from './19UserList2';
+
+import Pokemon from './20Pokemon';
+
+// import UserList from './19UserList2';
 // import InputSample from './18InputSample';
 // import Counter from './Counter';
 // import InputSample2 from './18InputSample2';
 // import UserList from './19UserList';
 
 function App() {
-  return <UserList />;
+  return <Pokemon />;
 }
 export default App;
 

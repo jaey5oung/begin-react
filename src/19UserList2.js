@@ -1,39 +1,23 @@
 import React from 'react';
 
-function User({ user }) {
+function User({ user, onRemove }) {
   return (
     <div>
-      <b>{user.name}</b>
+      <b>{user.username}</b>
       <span>({user.email})</span>
+      <button onClick={()=> onRemove(user.id)}>삭제</button>
     </div>
   );
 }
 //이부분에서 프롭스를 비구조할당으로 사용하는게 아직 어색하다
-function UserList() {
-  const users = [
-    {
-      id: 1,
-      username: 'jaeyoung',
-      email: 'jaey5oung@naver.com',
-    },
-    {
-      id: 2,
-      username: 'kangpoul',
-      email: 'kangpoul@naver.com',
-    },
-    {
-      id: 3,
-      username: 'jinwoo',
-      email: 'jinwoo@naver.com',
-    },
-  ];
+function UserList({ users, onRemove }) {
   return (
     <div>
       {/* <User user={users[0]} />
       <User user={users[1]} />
       <User user={users[2]} /> */}
       {users.map((user) => (
-        <User user={user} key={user.id} />
+        <User user={user} key={user.id} onRemove={onRemove} />
       ))}
     </div>
   );

@@ -70,3 +70,5 @@ export default App;
 //2: jsx내에서 자바스크립트함수를 불러올땐 const name = 'react' 라고했을땐 <div>{name}</div> 이런식으로 불러오면댄다
 //3: jsx에서 스타일을 사용할땐 위와같이 객체형태로 넣어줘야한다
 //4: css클래스를 사용할땐 class가아니라 className으로 써줘야한다
+
+//주말에 못했던거 월요일날 다 완료하기

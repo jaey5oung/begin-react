@@ -1,23 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function User({ user, onRemove }) {
+function User({ user, onRemove, onToggle }) {
+  useEffect(() => {
+    console.log('컴포넌트가 화면에 나타남');
+    //props -> state
+    //REST API
+    //setInterval, setTimeout
+    return () => {
+      //clearInterval, clearTimeout
+      //라이브러리 인스턴스 제거 
+      console.log('컴포넌트가 화면에서 사라짐');
+    };
+  }, []);
   return (
     <div>
-      <b>{user.username}</b>
+      <b
+        style={{ color: user.active ? 'green' : 'black', cursor: 'pointer' }}
+        onClick={() => onToggle(user.id)}
+      >
+        {user.username}
+      </b>
       <span>({user.email})</span>
-      <button onClick={()=> onRemove(user.id)}>삭제</button>
+      <button onClick={() => onRemove(user.id)}>삭제</button>
     </div>
   );
 }
 //이부분에서 프롭스를 비구조할당으로 사용하는게 아직 어색하다
-function UserList({ users, onRemove }) {
+function UserList({ users, onRemove, onToggle }) {
   return (
     <div>
       {/* <User user={users[0]} />
       <User user={users[1]} />
       <User user={users[2]} /> */}
       {users.map((user) => (
-        <User user={user} key={user.id} onRemove={onRemove} />
+        <User user={user} key={user.id} onRemove={onRemove} onToggle={onToggle} />
       ))}
     </div>
   );

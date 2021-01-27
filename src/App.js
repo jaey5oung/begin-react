@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useCallback } from 'react';
 import './App.css';
 import CreateUser from './21CreateUser';
 import UserList from './19UserList2';
@@ -13,13 +13,16 @@ function App() {
     email: '',
   });
   const { username, email } = inputs;
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
+  const onChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setInputs({
+        ...inputs,
+        [name]: value,
+      });
+    },
+    [inputs]
+  );
   const [users, setUsers] = useState([
     {
       id: 1,
@@ -42,7 +45,7 @@ function App() {
   ]);
 
   const nextId = useRef(4);
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     const user = {
       id: nextId.current,
       username,
@@ -54,16 +57,22 @@ function App() {
       email: '',
     });
     nextId.current += 1;
-  };
+  }, [username, email, users]);
 
-  const onRemove = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
-    console.log(id);
-  };
+  const onRemove = useCallback(
+    (id) => {
+      setUsers(users.filter((user) => user.id !== id));
+      console.log(id);
+    },
+    [users]
+  );
 
-  const onToggle = (id) => {
-    setUsers(users.map((user) => (user.id === id ? { ...user, active: !user.active } : user)));
-  };
+  const onToggle = useCallback(
+    (id) => {
+      setUsers(users.map((user) => (user.id === id ? { ...user, active: !user.active } : user)));
+    },
+    [users]
+  );
 
   const count = useMemo(() => countActiveUsers(users), [users]);
   //useMemo를 사용하게되면 필요한연산만 사용할수잇게된다 컴포넌트 최적화
@@ -84,5 +93,3 @@ export default App;
 //2: jsx내에서 자바스크립트함수를 불러올땐 const name = 'react' 라고했을땐 <div>{name}</div> 이런식으로 불러오면댄다
 //3: jsx에서 스타일을 사용할땐 위와같이 객체형태로 넣어줘야한다
 //4: css클래스를 사용할땐 class가아니라 className으로 써줘야한다
-
-//주말에 못했던거 월요일날 다 완료하기 못함..
